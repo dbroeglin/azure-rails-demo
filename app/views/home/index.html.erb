@@ -1,0 +1,23 @@
+<% content_for :title, "Home" %>
+
+<div style="max-width: 800px; margin: 0 auto; padding: 40px 20px; font-family: system-ui, -apple-system, sans-serif;">
+  <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: #333;">Welcome to Azure Rails Demo</h1>
+  
+  <% if authenticated? %>
+    <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
+      Hello, <strong><%= Current.user.email_address %></strong>! You are currently signed in.
+    </p>
+
+    <div style="margin-top: 30px;">
+      <%= button_to "Sign Out", session_path, method: :delete, style: "display: inline-block; padding: 12px 24px; background: #d13438; color: white; text-decoration: none; border-radius: 4px; font-weight: 500; border: none; cursor: pointer; font-size: 1rem;" %>
+    </div>
+  <% else %>
+    <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
+      This is your home page. Please sign in to access your account.
+    </p>
+
+    <div style="margin-top: 30px;">
+      <%= link_to "Sign In", new_session_path, style: "display: inline-block; padding: 12px 24px; background: #0078d4; color: white; text-decoration: none; border-radius: 4px; font-weight: 500;" %>
+    </div>
+  <% end %>
+</div>
