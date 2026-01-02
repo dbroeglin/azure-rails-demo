@@ -8,3 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* App-level overrides on top of Bulma */
+html, body {
+	background-color: #f8fafc;
+	color: #1f2933;
+}
