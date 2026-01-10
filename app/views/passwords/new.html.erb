@@ -1,8 +1,26 @@
-<h1>Forgot your password?</h1>
+<div class="section">
+  <div class="columns is-centered">
+    <div class="column is-4">
+      <div class="box">
+        <h1 class="title has-text-centered">Forgot Your Password?</h1>
+        <p class="subtitle has-text-centered has-text-grey">Enter your email to receive reset instructions</p>
+        
+        <%= tag.div(flash[:alert], class: "notification is-danger is-light") if flash[:alert] %>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+        <%= form_with url: passwords_path do |form| %>
+          <div class="field">
+            <label class="label">Email</label>
+            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", 
+                placeholder: "Enter your email address", value: params[:email_address], class: "input" %>
+          </div>
 
-<%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
-<% end %>
+          <%= form.submit "Email reset instructions", class: "button is-primary is-fullwidth" %>
+        <% end %>
+
+        <div class="has-text-centered mt-4">
+          <%= link_to "Back to Sign In", new_session_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
